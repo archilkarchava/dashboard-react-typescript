@@ -1,25 +1,40 @@
-import React from 'react'
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  text-align: center;
+`;
+
+const StyledHeader = styled.header`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
+
+const Button = styled("button")<{danger?: boolean}>`
+  height: 3em;
+  background: ${p => (p.danger ? "#f32a2a" : "#61dafb")};
+`;
 
 const App = () => {
+  const [danger, setDanger] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
+    <Wrapper>
+      <StyledHeader>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
-}
+        <Button onClick={() => setDanger(!danger)} danger={danger}>
+          Click
+        </Button>
+      </StyledHeader>
+    </Wrapper>
+  );
+};
 
 export default App;
