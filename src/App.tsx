@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Button } from "@material-ui/core";
 
 const Wrapper = styled.div`
   text-align: center;
@@ -16,11 +17,6 @@ const StyledHeader = styled.header`
   color: white;
 `;
 
-const Button = styled("button")<{danger?: boolean}>`
-  height: 3em;
-  background: ${p => (p.danger ? "#f32a2a" : "#61dafb")};
-`;
-
 const App = () => {
   const [danger, setDanger] = useState(false);
   return (
@@ -29,7 +25,11 @@ const App = () => {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Button onClick={() => setDanger(!danger)} danger={danger}>
+        <Button
+          onClick={() => setDanger(!danger)}
+          variant="contained"
+          color={danger ? "secondary" : "primary"}
+        >
           Click
         </Button>
       </StyledHeader>
