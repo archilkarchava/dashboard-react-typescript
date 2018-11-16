@@ -5,7 +5,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "interface-name": true,
-    "no-submodule-imports": true,
+    "no-submodule-imports": false,
     "no-implicit-dependencies": true,
     "no-empty": true,
     "jsx-no-lambda": false,

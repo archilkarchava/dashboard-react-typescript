@@ -1,40 +1,53 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Button } from "@material-ui/core";
+import React from "react";
+import {
+  createGenerateClassName,
+  jssPreset,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core/styles";
+import blue from "@material-ui/core/colors/blue";
+import pink from "@material-ui/core/colors/pink";
+import {
+  CssBaseline,
+  createStyles,
+  withStyles,
+  WithStyles
+} from "@material-ui/core";
+import Registration from "./components/Registration";
 
-const Wrapper = styled.div`
-  text-align: center;
-`;
+const theme = createMuiTheme({
+  palette: {
+    primary: blue,
+    secondary: pink
+  },
+  typography: {
+    useNextVariants: true
+  }
+});
 
-const StyledHeader = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-`;
+const styles = createStyles({
+  wrapper: {
+    display: "flex",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#bddbf3"
+  }
+});
 
-const App = () => {
-  const [danger, setDanger] = useState(false);
+const App = (props: WithStyles<typeof styles>) => {
+  const { classes } = props;
   return (
-    <Wrapper>
-      <StyledHeader>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Button
-          onClick={() => setDanger(!danger)}
-          variant="contained"
-          color={danger ? "secondary" : "primary"}
-        >
-          Click
-        </Button>
-      </StyledHeader>
-    </Wrapper>
+    <>
+      <CssBaseline />
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.wrapper}>
+          <Registration />
+        </div>
+      </MuiThemeProvider>
+    </>
   );
 };
 
-export default App;
+export default withStyles(styles)(App);
