@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  createGenerateClassName,
-  jssPreset,
-  createMuiTheme,
-  MuiThemeProvider
-} from "@material-ui/core/styles";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import blue from "@material-ui/core/colors/blue";
 import pink from "@material-ui/core/colors/pink";
 import {
