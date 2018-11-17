@@ -19,27 +19,33 @@ const styles = createStyles({
   }
 });
 
-interface ISubmitButtonProps extends WithStyles<typeof styles> {
+interface SubmitButtonProps extends WithStyles<typeof styles> {
+  type?: "submit";
   isSubmitting: boolean;
   isValid: boolean;
 }
 
-const SubmitButton = (props: ISubmitButtonProps & ButtonProps) => {
+const SubmitButton = (props: SubmitButtonProps & ButtonProps) => {
   const {
+    color,
+    variant,
+    fullWidth,
+    type,
     isValid,
     isSubmitting,
     children,
     classes,
     className,
+    innerRef,
     ...buttonProps
   } = props;
   return (
     <Button
       className={classNames(classes.button, className)}
       type="submit"
-      color="primary"
-      variant="contained"
-      fullWidth={true}
+      color={"primary" || color}
+      variant={"contained" || variant}
+      fullWidth={true || fullWidth}
       disabled={!isValid || isSubmitting}
       {...buttonProps}
     >
