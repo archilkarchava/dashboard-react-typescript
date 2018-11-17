@@ -6,7 +6,6 @@ import {
   WithStyles,
   createStyles,
   withStyles,
-  TextField,
   Typography
 } from "@material-ui/core";
 import SubmitButton from "./ui/SubmitButton";
@@ -20,7 +19,7 @@ const styles = createStyles({
   form: {
     maxWidth: "320px"
   },
-  typography: {
+  toRegistration: {
     marginTop: "16px"
   }
 });
@@ -33,7 +32,7 @@ interface FormValues {
 const Login = (props: WithStyles<typeof styles>) => {
   const { classes } = props;
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={6}>
       <Typography variant="h6">Вход</Typography>
       <Formik<FormValues>
         initialValues={{
@@ -66,7 +65,7 @@ const Login = (props: WithStyles<typeof styles>) => {
               Войти
             </SubmitButton>
             <Typography
-              className={classes.typography}
+              className={classes.toRegistration}
               align="center"
               variant="body2"
             >

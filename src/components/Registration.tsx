@@ -1,13 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import {
-  TextField,
-  Paper,
-  Typography,
-  createStyles,
-  WithStyles
-} from "@material-ui/core";
+import { Paper, Typography, createStyles, WithStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import SubmitButton from "./ui/SubmitButton";
 import { Link } from "react-router-dom";
@@ -20,7 +14,7 @@ const styles = createStyles({
   form: {
     maxWidth: "320px"
   },
-  typography: {
+  toLogin: {
     marginTop: "16px"
   }
 });
@@ -76,7 +70,7 @@ const Registration = (props: WithStyles<typeof styles>) => {
               Зарегистрироваться
             </SubmitButton>
             <Typography
-              className={classes.typography}
+              className={classes.toLogin}
               align="center"
               variant="body2"
             >
