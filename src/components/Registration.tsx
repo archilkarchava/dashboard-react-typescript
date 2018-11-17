@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import {
   TextField,
@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import SubmitButton from "./ui/SubmitButton";
+import { Link } from "react-router-dom";
+import InputField from "./ui/InputField";
 
 const styles = createStyles({
   paper: {
@@ -17,10 +19,13 @@ const styles = createStyles({
   },
   form: {
     maxWidth: "320px"
+  },
+  typography: {
+    marginTop: "16px"
   }
 });
 
-interface IFormValues {
+interface FormValues {
   firstName: string;
   lastName: string;
   email: string;
@@ -32,7 +37,7 @@ const Registration = (props: WithStyles<typeof styles>) => {
   return (
     <Paper className={classes.paper} elevation={6}>
       <Typography variant="h6">Регистрация</Typography>
-      <Formik<IFormValues>
+      <Formik<FormValues>
         initialValues={{
           firstName: "",
           lastName: "",
@@ -56,70 +61,28 @@ const Registration = (props: WithStyles<typeof styles>) => {
             .required("Введите пароль.")
         })}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isValid,
-          isSubmitting
-        }) => (
-          <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField
-              name="firstName"
-              label="Имя"
-              margin="normal"
-              variant="outlined"
-              fullWidth={true}
-              value={values.firstName}
-              error={touched.firstName && !!errors.firstName}
-              helperText={touched.firstName && errors.firstName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <TextField
-              name="lastName"
-              label="Фамилия"
-              margin="normal"
-              variant="outlined"
-              fullWidth={true}
-              value={values.lastName}
-              error={touched.lastName && !!errors.lastName}
-              helperText={touched.lastName && errors.lastName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <TextField
-              name="email"
-              label="E-mail"
-              margin="normal"
-              variant="outlined"
-              fullWidth={true}
-              value={values.email}
-              error={touched.email && !!errors.email}
-              helperText={touched.email && errors.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <TextField
+        {({ isValid, isSubmitting }) => (
+          <Form className={classes.form}>
+            <Field name="firstName" label="Имя" component={InputField} />
+            <Field name="lastName" label="Фамилия" component={InputField} />
+            <Field name="email" label="E-mail" component={InputField} />
+            <Field
               name="password"
               type="password"
               label="Пароль"
-              margin="normal"
-              variant="outlined"
-              fullWidth={true}
-              value={values.password}
-              error={touched.password && !!errors.password}
-              helperText={touched.password && errors.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              component={InputField}
             />
             <SubmitButton isSubmitting={isSubmitting} isValid={isValid}>
               Зарегистрироваться
             </SubmitButton>
-          </form>
+            <Typography
+              className={classes.typography}
+              align="center"
+              variant="body2"
+            >
+              Уже зарегистрированы? <Link to="/login">Вход</Link>
+            </Typography>
+          </Form>
         )}
       </Formik>
     </Paper>
