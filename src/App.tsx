@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import blue from "@material-ui/core/colors/blue";
 import pink from "@material-ui/core/colors/pink";
@@ -9,6 +10,7 @@ import {
   WithStyles
 } from "@material-ui/core";
 import Registration from "./components/Registration";
+import Login from "./components/Login";
 
 const theme = createMuiTheme({
   palette: {
@@ -38,7 +40,12 @@ const App = (props: WithStyles<typeof styles>) => {
       <CssBaseline />
       <MuiThemeProvider theme={theme}>
         <div className={classes.wrapper}>
-          <Registration />
+          <Router>
+            <Switch>
+              <Route path="/register" component={Registration} />
+              <Route path="/login" component={Login} />
+            </Switch>
+          </Router>
         </div>
       </MuiThemeProvider>
     </>
