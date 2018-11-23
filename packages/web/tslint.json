@@ -10,6 +10,7 @@
     "no-empty": false,
     "jsx-no-lambda": false,
     "jsx-self-close": false,
+    "jsx-boolean-value": false,
     "no-console": false
   },
   "linterOptions": {

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { registerSchema } from "@dashboard-react-ts/common";
 import { Paper, Typography, createStyles, WithStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import SubmitButton from "../components/ui/SubmitButton";
@@ -27,17 +27,6 @@ interface FormValues {
   password: string;
 }
 
-const registrationValidationShema = Yup.object().shape({
-  firstName: Yup.string().required("Введите имя."),
-  lastName: Yup.string().required("Введите фамилию."),
-  email: Yup.string()
-    .email("E-mail введён неверно.")
-    .required("Введите E-mail."),
-  password: Yup.string()
-    .min(8, "Пароль должен содержать минимум 8 символов.")
-    .required("Введите пароль.")
-});
-
 const RegistrationPage: React.FunctionComponent<
   WithStyles<typeof styles>
 > = props => {
@@ -59,7 +48,7 @@ const RegistrationPage: React.FunctionComponent<
               resetForm();
             }, 2000);
           }}
-          validationSchema={registrationValidationShema}
+          validationSchema={registerSchema}
         >
           {({ isValid, isSubmitting }) => (
             <Form className={classes.form}>

@@ -26,7 +26,7 @@ class MyApp extends App {
         <Head>
           <title>Company's Dashboard</title>
         </Head>
-        <style jsx={true} global={true}>
+        <style jsx global>
           {`
             html {
               width: 100%;

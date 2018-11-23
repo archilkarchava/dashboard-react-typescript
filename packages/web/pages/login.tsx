@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { loginSchema } from "@dashboard-react-ts/common";
 import {
   Paper,
   WithStyles,
@@ -30,13 +30,6 @@ interface FormValues {
   password: string;
 }
 
-const loginValidationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("E-mail введён неверно.")
-    .required("Введите E-mail."),
-  password: Yup.string().required("Введите пароль.")
-});
-
 const LoginPage: React.FunctionComponent<WithStyles<typeof styles>> = props => {
   const { classes } = props;
   return (
@@ -54,7 +47,7 @@ const LoginPage: React.FunctionComponent<WithStyles<typeof styles>> = props => {
               resetForm();
             }, 2000);
           }}
-          validationSchema={loginValidationSchema}
+          validationSchema={loginSchema}
         >
           {({ isValid, isSubmitting }) => (
             <Form className={classes.form}>
