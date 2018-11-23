@@ -3,7 +3,8 @@ import {
   FormikHandlers,
   FormikValues,
   FormikErrors,
-  FormikTouched
+  FormikTouched,
+  Field
 } from "formik";
 import { TextField } from "@material-ui/core";
 import { TextFieldProps } from "@material-ui/core/TextField";
@@ -21,28 +22,28 @@ interface InputFieldProps {
   };
 }
 
-const InputField = (props: InputFieldProps & TextFieldProps) => {
-  const {
-    field,
-    form,
-    margin,
-    variant,
-    fullWidth,
-    helperText,
-    ...restMuiProps
-  } = props;
+const InputField: React.FunctionComponent<InputFieldProps & TextFieldProps> = ({
+  children,
+  field,
+  form,
+  margin = "normal",
+  variant = "outlined" as any,
+  fullWidth = true,
+  helperText,
+  ...restMuiProps
+}) => {
   return (
     <TextField
       {...field}
-      margin={"normal" || props.margin}
-      variant={"outlined" || props.variant}
+      margin={margin}
+      variant={variant}
+      fullWidth={fullWidth}
       error={
         form.touched &&
         form.touched[field.name] &&
         form.errors &&
         !!form.errors[field.name]
       }
-      fullWidth={true || props.fullWidth}
       helperText={
         form.touched &&
         form.touched[field.name] &&
@@ -51,9 +52,13 @@ const InputField = (props: InputFieldProps & TextFieldProps) => {
       }
       {...restMuiProps}
     >
-      {props.children}
+      {children}
     </TextField>
   );
 };
 
-export default InputField;
+const FormikInputField: React.FunctionComponent<TextFieldProps> = props => {
+  return <Field {...props} component={InputField} />;
+};
+
+export default FormikInputField;

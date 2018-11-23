@@ -5,39 +5,38 @@
   "dependencies": {
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
+    "@zeit/next-typescript": "^1.1.1",
     "classnames": "^2.2.6",
     "formik": "^1.3.2",
+    "jss": "^9.8.7",
+    "next": "^7.0.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
+    "react-jss": "^8.6.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.1",
+    "styled-jsx": "^3.1.2",
     "uuid": "^3.3.2",
     "yup": "^0.26.6"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
     "@types/jest": "^23.3.9",
+    "@types/jss": "^9.5.7",
+    "@types/next": "^7.0.5",
     "@types/node": "^10.12.7",
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
+    "@types/react-jss": "^8.6.0",
     "@types/react-router-dom": "^4.3.1",
+    "@types/styled-jsx": "^2.2.7",
     "@types/uuid": "^3.4.4",
     "@types/yup": "^0.26.2",
     "typescript": "^3.1.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc"
+  }
 }

@@ -25,27 +25,28 @@ interface SubmitButtonProps extends WithStyles<typeof styles> {
   isValid: boolean;
 }
 
-const SubmitButton = (props: SubmitButtonProps & ButtonProps) => {
-  const {
-    color,
-    variant,
-    fullWidth,
-    type,
-    isValid,
-    isSubmitting,
-    children,
-    classes,
-    className,
-    innerRef,
-    ...buttonProps
-  } = props;
+const SubmitButton: React.FunctionComponent<
+  SubmitButtonProps & ButtonProps
+> = ({
+  children,
+  color = "primary",
+  variant = "contained",
+  fullWidth = true,
+  type,
+  isValid,
+  isSubmitting,
+  classes,
+  className,
+  innerRef,
+  ...buttonProps
+}) => {
   return (
     <Button
       className={classNames(classes.button, className)}
       type="submit"
-      color={"primary" || color}
-      variant={"contained" || variant}
-      fullWidth={true || fullWidth}
+      color={color}
+      variant={variant}
+      fullWidth={fullWidth}
       disabled={!isValid || isSubmitting}
       {...buttonProps}
     >
